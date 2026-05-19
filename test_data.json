@@ -1,0 +1,890 @@
+[
+    {
+      "model": "authentication_and_users.role",
+      "pk": 1,
+      "fields": { "role_name": "Project Manager" }
+    },
+    {
+      "model": "authentication_and_users.role",
+      "pk": 2,
+      "fields": { "role_name": "Senior Backend Developer" }
+    },
+    {
+      "model": "authentication_and_users.role",
+      "pk": 3,
+      "fields": { "role_name": "Frontend Engineer" }
+    },
+    {
+      "model": "authentication_and_users.role",
+      "pk": 4,
+      "fields": { "role_name": "QA Automation Engineer" }
+    },
+    {
+      "model": "authentication_and_users.role",
+      "pk": 5,
+      "fields": { "role_name": "UI/UX Designer" }
+    },
+    {
+      "model": "authentication_and_users.role",
+      "pk": 6,
+      "fields": { "role_name": "DevOps Engineer" }
+    },
+    {
+      "model": "authentication_and_users.role",
+      "pk": 7,
+      "fields": { "role_name": "Business Analyst" }
+    },
+    {
+      "model": "authentication_and_users.role",
+      "pk": 8,
+      "fields": { "role_name": "Data Scientist" }
+    },
+    {
+      "model": "authentication_and_users.role",
+      "pk": 9,
+      "fields": { "role_name": "Product Owner" }
+    },
+    {
+      "model": "authentication_and_users.role",
+      "pk": 10,
+      "fields": { "role_name": "Security Specialist" }
+    },
+    {
+      "model": "authentication_and_users.role",
+      "pk": 11,
+      "fields": { "role_name": "Scrum Master" }
+    },
+    {
+      "model": "authentication_and_users.role",
+      "pk": 12,
+      "fields": { "role_name": "Technical Writer" }
+    },
+  
+    {
+      "model": "authentication_and_users.usermaster",
+      "pk": 1,
+      "fields": {
+        "name": "Mari Kumar",
+        "email": "mari@company.com",
+        "role": 2,
+        "password": "pbkdf2_sha256$720000$dummyhash000001",
+        "designation": "Tech Lead",
+        "department": "Engineering",
+        "created_at": "2026-01-15T09:00:00Z"
+      }
+    },
+    {
+      "model": "authentication_and_users.usermaster",
+      "pk": 2,
+      "fields": {
+        "name": "Ananya Sharma",
+        "email": "ananya@company.com",
+        "role": 1,
+        "password": "pbkdf2_sha256$720000$dummyhash000002",
+        "designation": "Delivery Head",
+        "department": "Management",
+        "created_at": "2026-01-15T09:30:00Z"
+      }
+    },
+    {
+      "model": "authentication_and_users.usermaster",
+      "pk": 3,
+      "fields": {
+        "name": "Rohan Das",
+        "email": "rohan@company.com",
+        "role": 3,
+        "password": "pbkdf2_sha256$720000$dummyhash000003",
+        "designation": "Software Engineer II",
+        "department": "Engineering",
+        "created_at": "2026-02-01T10:00:00Z"
+      }
+    },
+    {
+      "model": "authentication_and_users.usermaster",
+      "pk": 4,
+      "fields": {
+        "name": "Priya Patel",
+        "email": "priya@company.com",
+        "role": 4,
+        "password": "pbkdf2_sha256$720000$dummyhash000004",
+        "designation": "QA Lead",
+        "department": "Quality Assurance",
+        "created_at": "2026-02-10T11:00:00Z"
+      }
+    },
+    {
+      "model": "authentication_and_users.usermaster",
+      "pk": 5,
+      "fields": {
+        "name": "Vikram Singh",
+        "email": "vikram@company.com",
+        "role": 5,
+        "password": "pbkdf2_sha256$720000$dummyhash000005",
+        "designation": "Principal Architect",
+        "department": "Design",
+        "created_at": "2026-02-15T14:20:00Z"
+      }
+    },
+    {
+      "model": "authentication_and_users.usermaster",
+      "pk": 6,
+      "fields": {
+        "name": "Siddharth Nair",
+        "email": "sid@company.com",
+        "role": 6,
+        "password": "pbkdf2_sha256$720000$dummyhash000006",
+        "designation": "DevOps Architect",
+        "department": "Infrastructure",
+        "created_at": "2026-03-01T08:45:00Z"
+      }
+    },
+    {
+      "model": "authentication_and_users.usermaster",
+      "pk": 7,
+      "fields": {
+        "name": "Meera Joshi",
+        "email": "meera@company.com",
+        "role": 7,
+        "password": "pbkdf2_sha256$720000$dummyhash000007",
+        "designation": "Lead Consultant",
+        "department": "Strategy",
+        "created_at": "2026-03-05T16:00:00Z"
+      }
+    },
+    {
+      "model": "authentication_and_users.usermaster",
+      "pk": 8,
+      "fields": {
+        "name": "Arjun Reddy",
+        "email": "arjun@company.com",
+        "role": 8,
+        "password": "pbkdf2_sha256$720000$dummyhash000008",
+        "designation": "ML Specialist",
+        "department": "Analytics",
+        "created_at": "2026-03-12T13:10:00Z"
+      }
+    },
+    {
+      "model": "authentication_and_users.usermaster",
+      "pk": 9,
+      "fields": {
+        "name": "Sana Khan",
+        "email": "sana@company.com",
+        "role": 9,
+        "password": "pbkdf2_sha256$720000$dummyhash000009",
+        "designation": "Product Manager",
+        "department": "Product",
+        "created_at": "2026-03-20T10:15:00Z"
+      }
+    },
+    {
+      "model": "authentication_and_users.usermaster",
+      "pk": 10,
+      "fields": {
+        "name": "Aditya Verma",
+        "email": "aditya@company.com",
+        "role": 10,
+        "password": "pbkdf2_sha256$720000$dummyhash000010",
+        "designation": "Infosec Auditor",
+        "department": "Security",
+        "created_at": "2026-03-25T11:40:00Z"
+      }
+    },
+    {
+      "model": "authentication_and_users.usermaster",
+      "pk": 11,
+      "fields": {
+        "name": "Neha Gupta",
+        "email": "neha@company.com",
+        "role": 11,
+        "password": "pbkdf2_sha256$720000$dummyhash000011",
+        "designation": "Agile Coach",
+        "department": "Management",
+        "created_at": "2026-04-01T09:00:00Z"
+      }
+    },
+    {
+      "model": "authentication_and_users.usermaster",
+      "pk": 12,
+      "fields": {
+        "name": "Chris Evans",
+        "email": "chris@company.com",
+        "role": 12,
+        "password": "pbkdf2_sha256$720000$dummyhash000012",
+        "designation": "Content Lead",
+        "department": "Documentation",
+        "created_at": "2026-04-10T15:30:00Z"
+      }
+    },
+  
+    {
+      "model": "authentication_and_users.userskill",
+      "pk": 1,
+      "fields": { "user": 1, "skill_name": "Python Django" }
+    },
+    {
+      "model": "authentication_and_users.userskill",
+      "pk": 2,
+      "fields": { "user": 1, "skill_name": "PostgreSQL Optimization" }
+    },
+    {
+      "model": "authentication_and_users.userskill",
+      "pk": 3,
+      "fields": { "user": 3, "skill_name": "React Hooks" }
+    },
+    {
+      "model": "authentication_and_users.userskill",
+      "pk": 4,
+      "fields": { "user": 3, "skill_name": "TypeScript Pro" }
+    },
+    {
+      "model": "authentication_and_users.userskill",
+      "pk": 5,
+      "fields": { "user": 4, "skill_name": "Selenium WebDriver" }
+    },
+    {
+      "model": "authentication_and_users.userskill",
+      "pk": 6,
+      "fields": { "user": 4, "skill_name": "JMeter Load Testing" }
+    },
+    {
+      "model": "authentication_and_users.userskill",
+      "pk": 7,
+      "fields": { "user": 5, "skill_name": "Figma Wireframing" }
+    },
+    {
+      "model": "authentication_and_users.userskill",
+      "pk": 8,
+      "fields": { "user": 6, "skill_name": "Docker Containerization" }
+    },
+    {
+      "model": "authentication_and_users.userskill",
+      "pk": 9,
+      "fields": { "user": 6, "skill_name": "Kubernetes Clusters" }
+    },
+    {
+      "model": "authentication_and_users.userskill",
+      "pk": 10,
+      "fields": { "user": 8, "skill_name": "PyTorch Transformers" }
+    },
+    {
+      "model": "authentication_and_users.userskill",
+      "pk": 11,
+      "fields": { "user": 10, "skill_name": "Penetration Testing" }
+    },
+    {
+      "model": "authentication_and_users.userskill",
+      "pk": 12,
+      "fields": { "user": 11, "skill_name": "Jira Portfolio Management" }
+    },
+  
+    {
+      "model": "authentication_and_users.usermedia",
+      "pk": 1,
+      "fields": { "user": 1, "system_path": "/var/media/profiles/mari.png", "file_name": "user_files/mari.png" }
+    },
+    {
+      "model": "authentication_and_users.usermedia",
+      "pk": 2,
+      "fields": { "user": 2, "system_path": "/var/media/profiles/ananya.png", "file_name": "user_files/ananya.png" }
+    },
+    {
+      "model": "authentication_and_users.usermedia",
+      "pk": 3,
+      "fields": { "user": 3, "system_path": "/var/media/profiles/rohan.png", "file_name": "user_files/rohan.png" }
+    },
+    {
+      "model": "authentication_and_users.usermedia",
+      "pk": 4,
+      "fields": { "user": 4, "system_path": "/var/media/profiles/priya.png", "file_name": "user_files/priya.png" }
+    },
+    {
+      "model": "authentication_and_users.usermedia",
+      "pk": 5,
+      "fields": { "user": 5, "system_path": "/var/media/profiles/vikram.png", "file_name": "user_files/vikram.png" }
+    },
+    {
+      "model": "authentication_and_users.usermedia",
+      "pk": 6,
+      "fields": { "user": 6, "system_path": "/var/media/profiles/sid.png", "file_name": "user_files/sid.png" }
+    },
+    {
+      "model": "authentication_and_users.usermedia",
+      "pk": 7,
+      "fields": { "user": 7, "system_path": "/var/media/profiles/meera.png", "file_name": "user_files/meera.png" }
+    },
+    {
+      "model": "authentication_and_users.usermedia",
+      "pk": 8,
+      "fields": { "user": 8, "system_path": "/var/media/profiles/arjun.png", "file_name": "user_files/arjun.png" }
+    },
+    {
+      "model": "authentication_and_users.usermedia",
+      "pk": 9,
+      "fields": { "user": 9, "system_path": "/var/media/profiles/sana.png", "file_name": "user_files/sana.png" }
+    },
+    {
+      "model": "authentication_and_users.usermedia",
+      "pk": 10,
+      "fields": { "user": 10, "system_path": "/var/media/profiles/aditya.png", "file_name": "user_files/aditya.png" }
+    },
+    {
+      "model": "authentication_and_users.usermedia",
+      "pk": 11,
+      "fields": { "user": 11, "system_path": "/var/media/profiles/neha.png", "file_name": "user_files/neha.png" }
+    },
+    {
+      "model": "authentication_and_users.usermedia",
+      "pk": 12,
+      "fields": { "user": 12, "system_path": "/var/media/profiles/chris.png", "file_name": "user_files/chris.png" }
+    },
+  
+    {
+      "model": "customer_and_projects.customermaster",
+      "pk": 1,
+      "fields": { "name": "Nexus Global Corp", "email": "billing@nexus.com", "phone": "+14155552671", "address": "789 Mission St, San Francisco, CA", "active_status": "active" }
+    },
+    {
+      "model": "customer_and_projects.customermaster",
+      "pk": 2,
+      "fields": { "name": "Vertex Systems LLC", "email": "ops@vertex.io", "phone": "+442079460192", "address": "45 Canary Wharf, London, UK", "active_status": "active" }
+    },
+    {
+      "model": "customer_and_projects.customermaster",
+      "pk": 3,
+      "fields": { "name": "Alpha Retail Group", "email": "info@alpharetail.com", "phone": "+912228719001", "address": "Bandrakurla Complex, Mumbai, India", "active_status": "active" }
+    },
+    {
+      "model": "customer_and_projects.customermaster",
+      "pk": 4,
+      "fields": { "name": "Zeta FinTech", "email": "compliance@zeta.de", "phone": "+49691234567", "address": "Mainzer Landstrasse, Frankfurt, Germany", "active_status": "active" }
+    },
+    {
+      "model": "customer_and_projects.customermaster",
+      "pk": 5,
+      "fields": { "name": "Omega Healthcare", "email": "vendor@omega.org", "phone": "+13125550143", "address": "500 N Michigan Ave, Chicago, IL", "active_status": "active" }
+    },
+    {
+      "model": "customer_and_projects.customermaster",
+      "pk": 6,
+      "fields": { "name": "Horizon Telecom", "email": "api@horizon.com", "phone": "+61298765432", "address": "George St, Sydney, Australia", "active_status": "inactive" }
+    },
+    {
+      "model": "customer_and_projects.customermaster",
+      "pk": 7,
+      "fields": { "name": "Apex Logistics", "email": "track@apex.com", "phone": "+81355550199", "address": "Chiyoda-ku, Tokyo, Japan", "active_status": "active" }
+    },
+    {
+      "model": "customer_and_projects.customermaster",
+      "pk": 8,
+      "fields": { "name": "Beacon Media Inc", "email": "legal@beacon.com", "phone": "+12125550188", "address": "Broadway, New York, NY", "active_status": "active" }
+    },
+    {
+      "model": "customer_and_projects.customermaster",
+      "pk": 9,
+      "fields": { "name": "Quantum Energy Corp", "email": "scada@quantum.ca", "phone": "+14035550122", "address": "Calgary, Alberta, Canada", "active_status": "active" }
+    },
+    {
+      "model": "customer_and_projects.customermaster",
+      "pk": 10,
+      "fields": { "name": "Vanguard Agro", "email": "supply@vanguard.br", "phone": "+551155550133", "address": "Av Paulista, Sao Paulo, Brazil", "active_status": "active" }
+    },
+    {
+      "model": "customer_and_projects.customermaster",
+      "pk": 11,
+      "fields": { "name": "Pinnacle EduTech", "email": "support@pinnacle.edu", "phone": "+6567890123", "address": "Orchard Rd, Singapore", "active_status": "active" }
+    },
+    {
+      "model": "customer_and_projects.customermaster",
+      "pk": 12,
+      "fields": { "name": "Titanium Automotive", "email": "parts@titanium.se", "phone": "+46317890123", "address": "Gothenburg, Sweden", "active_status": "active" }
+    },
+  
+    {
+      "model": "customer_and_projects.projectmaster",
+      "pk": 1,
+      "fields": { "project_name": "E-Commerce Gateway", "client": 1, "project_type": "external", "start_date": "2026-01-01", "due_date": "2026-06-30", "status": "inprogress", "progress_percent": 65 }
+    },
+    {
+      "model": "customer_and_projects.projectmaster",
+      "pk": 2,
+      "fields": { "project_name": "Cloud Infrastructure Migration", "client": 2, "project_type": "external", "start_date": "2026-01-15", "due_date": "2026-05-15", "status": "completed", "progress_percent": 100 }
+    },
+    {
+      "model": "customer_and_projects.projectmaster",
+      "pk": 3,
+      "fields": { "project_name": "Mobile Loyalty Suite", "client": 3, "project_type": "external", "start_date": "2026-02-01", "due_date": "2026-08-31", "status": "inprogress", "progress_percent": 40 }
+    },
+    {
+      "model": "customer_and_projects.projectmaster",
+      "pk": 4,
+      "fields": { "project_name": "Fraud Detection Core", "client": 4, "project_type": "external", "start_date": "2026-02-15", "due_date": "2026-11-30", "status": "inprogress", "progress_percent": 25 }
+    },
+    {
+      "model": "customer_and_projects.projectmaster",
+      "pk": 5,
+      "fields": { "project_name": "Patient EHR Dashboard", "client": 5, "project_type": "external", "start_date": "2026-03-01", "due_date": "2026-09-30", "status": "inprogress", "progress_percent": 35 }
+    },
+    {
+      "model": "customer_and_projects.projectmaster",
+      "pk": 6,
+      "fields": { "project_name": "Legacy Payroll Refactor", "client": 1, "project_type": "internal", "start_date": "2026-03-15", "due_date": "2026-06-15", "status": "inprogress", "progress_percent": 50 }
+    },
+    {
+      "model": "customer_and_projects.projectmaster",
+      "pk": 7,
+      "fields": { "project_name": "Supply Chain Ledger", "client": 7, "project_type": "external", "start_date": "2026-04-01", "due_date": "2026-12-15", "status": "inprogress", "progress_percent": 10 }
+    },
+    {
+      "model": "customer_and_projects.projectmaster",
+      "pk": 8,
+      "fields": { "project_name": "Video Analytics Pipeline", "client": 8, "project_type": "external", "start_date": "2026-04-10", "due_date": "2026-10-10", "status": "inprogress", "progress_percent": 20 }
+    },
+    {
+      "model": "customer_and_projects.projectmaster",
+      "pk": 9,
+      "fields": { "project_name": "Smart Grid IoT Engine", "client": 9, "project_type": "external", "start_date": "2026-04-15", "due_date": "2027-04-15", "status": "inprogress", "progress_percent": 5 }
+    },
+    {
+      "model": "customer_and_projects.projectmaster",
+      "pk": 10,
+      "fields": { "project_name": "Corporate Website CMS", "client": 11, "project_type": "external", "start_date": "2026-05-01", "due_date": "2026-07-31", "status": "inprogress", "progress_percent": 12 }
+    },
+    {
+      "model": "customer_and_projects.projectmaster",
+      "pk": 11,
+      "fields": { "project_name": "Internal Knowledge Hub", "client": 2, "project_type": "internal", "start_date": "2026-05-10", "due_date": "2026-08-10", "status": "inprogress", "progress_percent": 8 }
+    },
+    {
+      "model": "customer_and_projects.projectmaster",
+      "pk": 12,
+      "fields": { "project_name": "Fleet Telematics API", "client": 12, "project_type": "external", "start_date": "2026-05-15", "due_date": "2026-11-15", "status": "drop", "progress_percent": 0 }
+    },
+  
+    {
+      "model": "customer_and_projects.phasemaster",
+      "pk": 1,
+      "fields": { "phase_name": "Requirements Gathering", "project": 1, "budget": "15000.00", "start_date": "2026-01-01", "due_date": "2026-01-31", "status": "completed" }
+    },
+    {
+      "model": "customer_and_projects.phasemaster",
+      "pk": 2,
+      "fields": { "phase_name": "API Architecture Design", "project": 1, "budget": "25000.00", "start_date": "2026-02-01", "due_date": "2026-03-15", "status": "completed" }
+    },
+    {
+      "model": "customer_and_projects.phasemaster",
+      "pk": 3,
+      "fields": { "phase_name": "Core Backend Engine", "project": 1, "budget": "45000.00", "start_date": "2026-03-16", "due_date": "2026-05-15", "status": "inprogress" }
+    },
+    {
+      "model": "customer_and_projects.phasemaster",
+      "pk": 4,
+      "fields": { "phase_name": "AWS Stack Infrastructure Build", "project": 2, "budget": "60000.00", "start_date": "2026-01-15", "due_date": "2026-03-31", "status": "completed" }
+    },
+    {
+      "model": "customer_and_projects.phasemaster",
+      "pk": 5,
+      "fields": { "phase_name": "Data Migration Executions", "project": 2, "budget": "30000.00", "start_date": "2026-04-01", "due_date": "2026-05-15", "status": "completed" }
+    },
+    {
+      "model": "customer_and_projects.phasemaster",
+      "pk": 6,
+      "fields": { "phase_name": "UI High-Fidelity Prototyping", "project": 3, "budget": "12000.00", "start_date": "2026-02-01", "due_date": "2026-03-15", "status": "completed" }
+    },
+    {
+      "model": "customer_and_projects.phasemaster",
+      "pk": 7,
+      "fields": { "phase_name": "Frontend Layout Assembly", "project": 3, "budget": "28000.00", "start_date": "2026-03-16", "due_date": "2026-06-30", "status": "inprogress" }
+    },
+    {
+      "model": "customer_and_projects.phasemaster",
+      "pk": 8,
+      "fields": { "phase_name": "Algorithm Engineering Exploration", "project": 4, "budget": "50000.00", "start_date": "2026-02-15", "due_date": "2026-05-31", "status": "inprogress" }
+    },
+    {
+      "model": "customer_and_projects.phasemaster",
+      "pk": 9,
+      "fields": { "phase_name": "HIPAA System Hardening", "project": 5, "budget": "22000.00", "start_date": "2026-03-01", "due_date": "2026-04-30", "status": "completed" }
+    },
+    {
+      "model": "customer_and_projects.phasemaster",
+      "pk": 10,
+      "fields": { "phase_name": "Database Schema Re-indexing", "project": 6, "budget": "15000.00", "start_date": "2026-03-15", "due_date": "2026-04-30", "status": "completed" }
+    },
+    {
+      "model": "customer_and_projects.phasemaster",
+      "pk": 11,
+      "fields": { "phase_name": "Smart Contract Audits", "project": 7, "budget": "40000.00", "start_date": "2026-04-01", "due_date": "2026-06-15", "status": "inprogress" }
+    },
+    {
+      "model": "customer_and_projects.phasemaster",
+      "pk": 12,
+      "fields": { "phase_name": "Kafka Stream Wiring Setup", "project": 8, "budget": "35000.00", "start_date": "2026-04-10", "due_date": "2026-06-10", "status": "inprogress" }
+    },
+  
+    {
+      "model": "tasks_and_subtasks.tasklistmaster",
+      "pk": 1,
+      "fields": { "name": "Milestone 1 - Alpha", "status": "inprogress" }
+    },
+    {
+      "model": "tasks_and_subtasks.tasklistmaster",
+      "pk": 2,
+      "fields": { "name": "Milestone 2 - Integration", "status": "inprogress" }
+    },
+    {
+      "model": "tasks_and_subtasks.tasklistmaster",
+      "pk": 3,
+      "fields": { "name": "Milestone 3 - Security Audits", "status": "inprogress" }
+    },
+    {
+      "model": "tasks_and_subtasks.tasklistmaster",
+      "pk": 4,
+      "fields": { "name": "Sprint 1 - Foundations", "status": "completed" }
+    },
+    {
+      "model": "tasks_and_subtasks.tasklistmaster",
+      "pk": 5,
+      "fields": { "name": "Sprint 2 - API Assembly", "status": "completed" }
+    },
+    {
+      "model": "tasks_and_subtasks.tasklistmaster",
+      "pk": 6,
+      "fields": { "name": "Sprint 3 - Client Dashboard", "status": "inprogress" }
+    },
+    {
+      "model": "tasks_and_subtasks.tasklistmaster",
+      "pk": 7,
+      "fields": { "name": "Sprint 4 - Optimization Work", "status": "inprogress" }
+    },
+    {
+      "model": "tasks_and_subtasks.tasklistmaster",
+      "pk": 8,
+      "fields": { "name": "Hotfix Batch - Production Issues", "status": "inprogress" }
+    },
+    {
+      "model": "tasks_and_subtasks.tasklistmaster",
+      "pk": 9,
+      "fields": { "name": "UAT Validation Pipeline", "status": "inprogress" }
+    },
+    {
+      "model": "tasks_and_subtasks.tasklistmaster",
+      "pk": 10,
+      "fields": { "name": "Beta Release Candidate Core", "status": "inprogress" }
+    },
+    {
+      "model": "tasks_and_subtasks.tasklistmaster",
+      "pk": 11,
+      "fields": { "name": "Post-Launch Enhancements Suite", "status": "inprogress" }
+    },
+    {
+      "model": "tasks_and_subtasks.tasklistmaster",
+      "pk": 12,
+      "fields": { "name": "Legacy System Deprecation Run", "status": "drop" }
+    },
+  
+    {
+      "model": "tasks_and_subtasks.taskmaster",
+      "pk": 1,
+      "fields": { "task_name": "Implement JWT Middleware Protection", "task_list": 4, "priority": "hot", "status": "completed", "estimated_hrs": "12.00" }
+    },
+    {
+      "model": "tasks_and_subtasks.taskmaster",
+      "pk": 2,
+      "fields": { "task_name": "Design Stripe Gateway Webhook Routing", "task_list": 5, "priority": "hot", "status": "completed", "estimated_hrs": "16.50" }
+    },
+    {
+      "model": "tasks_and_subtasks.taskmaster",
+      "pk": 3,
+      "fields": { "task_name": "Optimize Complex Activity Join Queries", "task_list": 7, "priority": "normal", "status": "inprogress", "estimated_hrs": "8.00" }
+    },
+    {
+      "model": "tasks_and_subtasks.taskmaster",
+      "pk": 4,
+      "fields": { "task_name": "Create UI Figma Profile Blueprints", "task_list": 4, "priority": "cold", "status": "completed", "estimated_hrs": "6.00" }
+    },
+    {
+      "model": "tasks_and_subtasks.taskmaster",
+      "pk": 5,
+      "fields": { "task_name": "Configure Redis Server Caching Tiers", "task_list": 7, "priority": "hot", "status": "inprogress", "estimated_hrs": "10.25" }
+    },
+    {
+      "model": "tasks_and_subtasks.taskmaster",
+      "pk": 6,
+      "fields": { "task_name": "Assemble Unit Tests for Auth Core App", "task_list": 5, "priority": "normal", "status": "completed", "estimated_hrs": "14.00" }
+    },
+    {
+      "model": "tasks_and_subtasks.taskmaster",
+      "pk": 7,
+      "fields": { "task_name": "Build Frontend Multi-File Input System", "task_list": 6, "priority": "normal", "status": "inprogress", "estimated_hrs": "9.50" }
+    },
+    {
+      "model": "tasks_and_subtasks.taskmaster",
+      "pk": 8,
+      "fields": { "task_name": "Patch Memory Leak on Socket Clusters", "task_list": 8, "priority": "hot", "status": "inprogress", "estimated_hrs": "5.00" }
+    },
+    {
+      "model": "tasks_and_subtasks.taskmaster",
+      "pk": 9,
+      "fields": { "task_name": "Deploy Kubernetes Ingress Route Layouts", "task_list": 2, "priority": "hot", "status": "inprogress", "estimated_hrs": "11.00" }
+    },
+    {
+      "model": "tasks_and_subtasks.taskmaster",
+      "pk": 10,
+      "fields": { "task_name": "Train Basic XG-Boost Fraud Models", "task_list": 1, "priority": "normal", "status": "inprogress", "estimated_hrs": "20.00" }
+    },
+    {
+      "model": "tasks_and_subtasks.taskmaster",
+      "pk": 11,
+      "fields": { "task_name": "Write API Integration Guide Files", "task_list": 9, "priority": "cold", "status": "inprogress", "estimated_hrs": "7.50" }
+    },
+    {
+      "model": "tasks_and_subtasks.taskmaster",
+      "pk": 12,
+      "fields": { "task_name": "Refactor Discarded IE11 Layout Hacks", "task_list": 12, "priority": "cold", "status": "drop", "estimated_hrs": "4.00" }
+    },
+  
+    {
+      "model": "tasks_and_subtasks.subtaskmaster",
+      "pk": 1,
+      "fields": { "sub_task_name": "Generate Base Token Decoding Mechanics", "parent_task": 1, "status": "completed", "estimated_hrs": "4.00" }
+    },
+    {
+      "model": "tasks_and_subtasks.subtaskmaster",
+      "pk": 2,
+      "fields": { "sub_task_name": "Write Middleware Exception Interceptors", "parent_task": 1, "status": "completed", "estimated_hrs": "3.50" }
+    },
+    {
+      "model": "tasks_and_subtasks.subtaskmaster",
+      "pk": 3,
+      "fields": { "sub_task_name": "Verify Valid Token Signature States", "parent_task": 1, "status": "completed", "estimated_hrs": "4.50" }
+    },
+    {
+      "model": "tasks_and_subtasks.subtaskmaster",
+      "pk": 4,
+      "fields": { "sub_task_name": "Construct Signature Security Verification Hooks", "parent_task": 2, "status": "completed", "estimated_hrs": "6.00" }
+    },
+    {
+      "model": "tasks_and_subtasks.subtaskmaster",
+      "pk": 5,
+      "fields": { "sub_task_name": "Map Core Payload Schema Objects", "parent_task": 2, "status": "completed", "estimated_hrs": "5.50" }
+    },
+    {
+      "model": "tasks_and_subtasks.subtaskmaster",
+      "pk": 6,
+      "fields": { "sub_task_name": "Inject Dynamic Query Prefetch Indexing", "parent_task": 3, "status": "inprogress", "estimated_hrs": "4.00" }
+    },
+    {
+      "model": "tasks_and_subtasks.subtaskmaster",
+      "pk": 7,
+      "fields": { "sub_task_name": "Isolate Core Bottlenecks inside Execution Loops", "parent_task": 3, "status": "completed", "estimated_hrs": "4.00" }
+    },
+    {
+      "model": "tasks_and_subtasks.subtaskmaster",
+      "pk": 8,
+      "fields": { "sub_task_name": "Stand Up Redis Nodes on Local Stacks", "parent_task": 5, "status": "completed", "estimated_hrs": "3.00" }
+    },
+    {
+      "model": "tasks_and_subtasks.subtaskmaster",
+      "pk": 9,
+      "fields": { "sub_task_name": "Draft Connection Routing Fallback Blocks", "parent_task": 5, "status": "inprogress", "estimated_hrs": "7.25" }
+    },
+    {
+      "model": "tasks_and_subtasks.subtaskmaster",
+      "pk": 10,
+      "fields": { "sub_task_name": "Write Mock Object Context Providers", "parent_task": 6, "status": "completed", "estimated_hrs": "5.00" }
+    },
+    {
+      "model": "tasks_and_subtasks.subtaskmaster",
+      "pk": 11,
+      "fields": { "sub_task_name": "Format Drag-and-Drop Dropzone UI Elements", "parent_task": 7, "status": "inprogress", "estimated_hrs": "5.50" }
+    },
+    {
+      "model": "tasks_and_subtasks.subtaskmaster",
+      "pk": 12,
+      "fields": { "sub_task_name": "Profile Core Heap Allocation Footprints", "parent_task": 8, "status": "inprogress", "estimated_hrs": "5.00" }
+    },
+  
+    {
+      "model": "tasks_and_subtasks.taskassignee",
+      "pk": 1,
+      "fields": { "task": 1, "user": 1, "billing_status": "billed" }
+    },
+    {
+      "model": "tasks_and_subtasks.taskassignee",
+      "pk": 2,
+      "fields": { "task": 1, "user": 10, "billing_status": "billed" }
+    },
+    {
+      "model": "tasks_and_subtasks.taskassignee",
+      "pk": 3,
+      "fields": { "task": 2, "user": 1, "billing_status": "billed" }
+    },
+    {
+      "model": "tasks_and_subtasks.taskassignee",
+      "pk": 4,
+      "fields": { "task": 3, "user": 1, "billing_status": "inprogress" }
+    },
+    {
+      "model": "tasks_and_subtasks.taskassignee",
+      "pk": 5,
+      "fields": { "task": 3, "user": 3, "billing_status": "inprogress" }
+    },
+    {
+      "model": "tasks_and_subtasks.taskassignee",
+      "pk": 6,
+      "fields": { "task": 4, "user": 5, "billing_status": "billed" }
+    },
+    {
+      "model": "tasks_and_subtasks.taskassignee",
+      "pk": 7,
+      "fields": { "task": 5, "user": 6, "billing_status": "inprogress" }
+    },
+    {
+      "model": "tasks_and_subtasks.taskassignee",
+      "pk": 8,
+      "fields": { "task": 6, "user": 4, "billing_status": "billed" }
+    },
+    {
+      "model": "tasks_and_subtasks.taskassignee",
+      "pk": 9,
+      "fields": { "task": 7, "user": 3, "billing_status": "inprogress" }
+    },
+    {
+      "model": "tasks_and_subtasks.taskassignee",
+      "pk": 10,
+      "fields": { "task": 8, "user": 6, "billing_status": "inprogress" }
+    },
+    {
+      "model": "tasks_and_subtasks.taskassignee",
+      "pk": 11,
+      "fields": { "task": 9, "user": 6, "billing_status": "pending" }
+    },
+    {
+      "model": "tasks_and_subtasks.taskassignee",
+      "pk": 12,
+      "fields": { "task": 10, "user": 8, "billing_status": "pending" }
+    },
+  
+    {
+      "model": "logging_and_activities.logmaster",
+      "pk": 1,
+      "fields": { "project": 1, "task": 1, "user": 1, "log_date": "2026-05-12", "total_spent_hrs": "4.00", "note": "Wrote verification logic hooks for JWT middleware layers." }
+    },
+    {
+      "model": "logging_and_activities.logmaster",
+      "pk": 2,
+      "fields": { "project": 1, "task": 1, "user": 1, "log_date": "2026-05-13", "total_spent_hrs": "4.50", "note": "Resolved token expiry parsing issues during session timeouts." }
+    },
+    {
+      "model": "logging_and_activities.logmaster",
+      "pk": 3,
+      "fields": { "project": 1, "task": 2, "user": 1, "log_date": "2026-05-14", "total_spent_hrs": "6.00", "note": "Mapped Stripe webhook request data schemas inside endpoints." }
+    },
+    {
+      "model": "logging_and_activities.logmaster",
+      "pk": 4,
+      "fields": { "project": 1, "task": 2, "user": 1, "log_date": "2026-05-15", "total_spent_hrs": "5.50", "note": "Wrote cryptographic signature matching checkers." }
+    },
+    {
+      "model": "logging_and_activities.logmaster",
+      "pk": 5,
+      "fields": { "project": 1, "task": 3, "user": 1, "log_date": "2026-05-18", "total_spent_hrs": "3.50", "note": "Injected clean prefetch selectors inside base models." }
+    },
+    {
+      "model": "logging_and_activities.logmaster",
+      "pk": 6,
+      "fields": { "project": 1, "task": 3, "user": 3, "log_date": "2026-05-18", "total_spent_hrs": "4.25", "note": "Linked new prefetch modules to matching target front-end stores." }
+    },
+    {
+      "model": "logging_and_activities.logmaster",
+      "pk": 7,
+      "fields": { "project": 6, "task": 3, "user": 1, "log_date": "2026-05-19", "total_spent_hrs": "2.00", "note": "Evaluated execution performance footprints across datasets." }
+    },
+    {
+      "model": "logging_and_activities.logmaster",
+      "pk": 8,
+      "fields": { "project": 2, "task": 5, "user": 6, "log_date": "2026-03-20", "total_spent_hrs": "3.00", "note": "Provisioned Redis cluster nodes across staging infrastructure." }
+    },
+    {
+      "model": "logging_and_activities.logmaster",
+      "pk": 9,
+      "fields": { "project": 2, "task": 5, "user": 6, "log_date": "2026-03-21", "total_spent_hrs": "4.50", "note": "Tested failover configuration switches across nodes." }
+    },
+    {
+      "model": "logging_and_activities.logmaster",
+      "pk": 10,
+      "fields": { "project": 1, "task": 6, "user": 4, "log_date": "2026-04-15", "total_spent_hrs": "6.50", "note": "Achieved 92% unit test metric coverage profiles." }
+    },
+    {
+      "model": "logging_and_activities.logmaster",
+      "pk": 11,
+      "fields": { "project": 3, "task": 7, "user": 3, "log_date": "2026-05-10", "total_spent_hrs": "5.00", "note": "Resolved file chunk assembly sorting anomalies." }
+    },
+    {
+      "model": "logging_and_activities.logmaster",
+      "pk": 12,
+      "fields": { "project": 4, "task": 8, "user": 6, "log_date": "2026-05-12", "total_spent_hrs": "4.00", "note": "Patched heap tracking drift inside socket pipelines." }
+    },
+  
+    {
+      "model": "logging_and_activities.activitylog",
+      "pk": 1,
+      "fields": { "action": "User Authentication Success", "activity_type": "completed", "description": "Mari Kumar requested a fresh JWT token pair successfully from terminal app.", "timestamp": "2026-05-18T09:00:00Z" }
+    },
+    {
+      "model": "logging_and_activities.activitylog",
+      "pk": 2,
+      "fields": { "action": "Database Table Setup Sequence", "activity_type": "completed", "description": "Ran full app migrations over targeted PostgreSQL databases.", "timestamp": "2026-05-18T09:15:00Z" }
+    },
+    {
+      "model": "logging_and_activities.activitylog",
+      "pk": 3,
+      "fields": { "action": "Data Fixture Upload System Run", "activity_type": "completed", "description": "Parsed and injected mock data payloads directly from local json files.", "timestamp": "2026-05-18T09:20:00Z" }
+    },
+    {
+      "model": "logging_and_activities.activitylog",
+      "pk": 4,
+      "fields": { "action": "Stripe Gateway Integration Verification", "activity_type": "completed", "description": "Validated secure communication integrity between components.", "timestamp": "2026-05-18T10:00:00Z" }
+    },
+    {
+      "model": "logging_and_activities.activitylog",
+      "pk": 5,
+      "fields": { "action": "Redis Cache Node Provisioning", "activity_type": "completed", "description": "Successfully spun up memory store blocks across networks.", "timestamp": "2026-05-18T11:30:00Z" }
+    },
+    {
+      "model": "logging_and_activities.activitylog",
+      "pk": 6,
+      "fields": { "action": "GraphQL Router Assembly Blueprint Check", "activity_type": "inprogress", "description": "Drafting modular schema configurations across matching microservices.", "timestamp": "2026-05-18T12:00:00Z" }
+    },
+    {
+      "model": "logging_and_activities.activitylog",
+      "pk": 7,
+      "fields": { "action": "Query Optimizer Diagnostic Runs", "activity_type": "completed", "description": "Reduced index evaluation scans by an average factor of 4x.", "timestamp": "2026-05-18T14:10:00Z" }
+    },
+    {
+      "model": "logging_and_activities.activitylog",
+      "pk": 8,
+      "fields": { "action": "AWS S3 CORS Configuration Adjustment", "activity_type": "completed", "description": "Whitelisted origin domains safely to eliminate media errors.", "timestamp": "2026-05-18T14:45:00Z" }
+    },
+    {
+      "model": "logging_and_activities.activitylog",
+      "pk": 9,
+      "fields": { "action": "Hotfix Deployment Batch #4", "activity_type": "completed", "description": "Pushed patch for socket container connection drops to live instances.", "timestamp": "2026-05-18T15:30:00Z" }
+    },
+    {
+      "model": "logging_and_activities.activitylog",
+      "pk": 10,
+      "fields": { "action": "UAT Validation Sequence Core", "activity_type": "inprogress", "description": "Compiling checklist items for client confirmation testing rounds.", "timestamp": "2026-05-18T16:00:00Z" }
+    },
+    {
+      "model": "logging_and_activities.activitylog",
+      "pk": 11,
+      "fields": { "action": "Snyk Security Code Audit Scanner", "activity_type": "completed", "description": "Scanned whole system: Zero critical or high-severity CVE threats found.", "timestamp": "2026-05-18T16:45:00Z" }
+    },
+    {
+      "model": "logging_and_activities.activitylog",
+      "pk": 12,
+      "fields": { "action": "Legacy IE11 Compatibility Blocks", "activity_type": "drop", "description": "Completely scrubbed abandoned fallbacks from global style definitions.", "timestamp": "2026-05-18T17:00:00Z" }
+    }
+  ]
