@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_simplejwt',
     'corsheaders',
     'authentication_and_users',
     'customer_and_projects',
@@ -80,13 +81,28 @@ REST_FRAMEWORK = {
     )
 }
 SIMPLE_JWT = {
-    # Change 5 minutes to something longer, like 1 day or 6 hours
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=1), 
-    
-    # Refresh tokens allow users to get new access tokens without re-logging
+    # Access tokens expire quickly for tight API security
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
+    # Refresh tokens last longer to reissue new access keys seamlessly
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
-    
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': False,
+    'UPDATE_LAST_LOGIN': True,
+
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY, # Uses your project secret key to verify tokens
+    'VERIFYING_KEY': None,
+    'AUDIENCE': None,
+    'ISSUER': None,
+
     'AUTH_HEADER_TYPES': ('Bearer',),
+    'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
+    'USER_AUTHENTICATION_RULE': 'rest_framework_simplejwt.authentication.default_user_authentication_rule',
+
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    'TOKEN_TYPE_CLAIM': 'token_type',
 }
 WSGI_APPLICATION = 'newproject.wsgi.application'
 
