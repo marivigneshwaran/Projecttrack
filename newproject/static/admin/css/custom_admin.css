@@ -1,0 +1,127 @@
+/* ==========================================================================
+   Font and Base Background Matching
+   ========================================================================== */
+   body, .content-wrapper, .table, th, td {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif !important;
+}
+
+/* ==========================================================================
+   Card Wrapper Overhauls
+   ========================================================================== */
+.card {
+    border-radius: 14px !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.01) !important;
+}
+
+/* ==========================================================================
+   Header Action Buttons Styling
+   ========================================================================== */
+.btn-success, .btn-primary, #changelist-form .actions .button {
+    background: #4f46e5 !important;
+    border-color: #4f46e5 !important;
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    padding: 0.4rem 1rem !important;
+    transition: all 0.2s ease;
+}
+
+.btn-success:hover, .btn-primary:hover {
+    background: #3730a3 !important;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15) !important;
+}
+
+/* ==========================================================================
+   Modernized Table Core Styling
+   ========================================================================== */
+.table {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+}
+
+.table td {
+    padding: 0.85rem 1.25rem !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+    color: #334155 !important;
+    vertical-align: middle !important;
+}
+
+/* ==========================================================================
+   Custom Table Headers (Deep Indigo)
+   ========================================================================== */
+.card-body .table thead th,
+.table th,
+#result_list thead th {
+    background-color: #312e81 !important; /* Deep Indigo Navy Blue */
+    color: #ffffff !important;            /* High-contrast crisp white text */
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    padding: 1rem 1.25rem !important;
+    border: none !important;
+}
+
+/* Force text sorting links inside the headers to remain white */
+.card-body .table thead th a,
+#result_list thead th a {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+}
+
+/* Smooth header border rounding matches */
+.table thead tr:first-child th:first-child {
+    border-top-left-radius: 10px !important;
+}
+.table thead tr:first-child th:last-child {
+    border-top-right-radius: 10px !important;
+}
+
+/* ==========================================================================
+   FIXED: ID / Primary Column Background Overrides
+   ========================================================================== */
+.table tbody tr td:first-child,
+.table tbody tr th,
+.table tbody tr td {
+    background-color: transparent !important;
+}
+
+#result_list tbody tr td, 
+#result_list tbody tr th {
+    background-color: transparent !important;
+}
+
+/* Dynamic row color updates on mouse cursor hover */
+.table tbody tr:hover,
+.table tbody tr:hover td,
+.table tbody tr:hover th {
+    background-color: #f8fafc !important;
+}
+
+/* ==========================================================================
+   Custom Styled Form Checkboxes
+   ========================================================================== */
+.table input[type="checkbox"] {
+    accent-color: #4f46e5 !important;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   Filter Actions Strip Control Menu
+   ========================================================================== */
+#changelist-form .actions {
+    background: #fafafa !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 10px !important;
+    padding: 0.6rem !important;
+    margin-bottom: 1rem !important;
+}
+
+#changelist-form .actions select {
+    border-radius: 6px !important;
+    border: 1px solid #cbd5e1 !important;
+    padding: 0.25rem 0.5rem !important;
+}

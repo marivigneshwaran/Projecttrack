@@ -1,0 +1,504 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}
+{{ block.super }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  #content { max-width: 1400px; }
+  .pm-dashboard { font-family: "DM Sans", system-ui, sans-serif; color: #0f172a; margin-bottom: 2rem; }
+  
+  .pm-dashboard__hero {
+    background: linear-gradient(135deg, #1e1b4b 0%, #4f46e5 50%, #0ea5e9 100%);
+    border-radius: 16px; padding: 1.5rem 2rem; color: #fff; margin-bottom: 1.5rem;
+    box-shadow: 0 10px 30px rgba(79, 70, 229, 0.15);
+  }
+  .pm-dashboard__hero h1 { margin: 0; font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; }
+  .pm-dashboard__hero p { margin: 0.25rem 0 0; opacity: 0.85; font-size: 0.9rem; }
+  
+  /* Filter Toolbar Design Changes */
+  .pm-filter-strip {
+    background: #fff; border: 1px solid #e2e8f0; border-radius: 12px;
+    padding: 0.85rem 1.25rem; margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  }
+  .pm-filter-item { display: flex; align-items: center; gap: 0.5rem; }
+  .pm-filter-item label { font-size: 0.8rem; font-weight: 600; color: #475569; text-transform: uppercase; letter-spacing: 0.03em; }
+  .pm-filter-input {
+    padding: 0.45rem 2rem 0.45rem 0.75rem; border: 1px solid #cbd5e1; border-radius: 8px;
+    font-size: 0.85rem; color: #334155; background-color: #fff; outline: none; min-width: 160px; transition: border 0.15s;
+  }
+  .pm-filter-input:focus { border-color: #4f46e5; box-shadow: 0 0 0 2px rgba(79,70,229,0.1); }
+  .pm-submit-btn {
+    background: #4f46e5; color: #fff; border: none; padding: 0.5rem 1.25rem;
+    border-radius: 8px; font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all 0.2s;
+  }
+  .pm-submit-btn:hover { background: #3730a3; transform: translateY(-1px); }
+  .pm-clear-btn { font-size: 0.85rem; color: #64748b; text-decoration: none; margin-left: auto; font-weight: 500; }
+  .pm-clear-btn:hover { color: #0f172a; }
+
+  /* KPI Layout Grid */
+  .pm-kpi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+  .pm-kpi { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1rem; transition: transform 0.2s; }
+  .pm-kpi:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+  .pm-kpi__label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; font-weight: 600; margin-bottom: 0.25rem; }
+  .pm-kpi__value { font-size: 1.5rem; font-weight: 700; color: #0f172a; }
+  .pm-kpi__sub { font-size: 0.75rem; color: #64748b; margin-top: 0.25rem; display: flex; align-items: center; gap: 0.25rem; }
+  .pm-kpi--accent .pm-kpi__value { color: #4f46e5; }
+  .pm-kpi--success .pm-kpi__value { color: #10b981; }
+
+  /* Upgraded Chart Cards with Option Filters Inside Header */
+  .pm-charts-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-bottom: 1.5rem; }
+  @media (max-width: 992px) { .pm-charts-container { grid-template-columns: 1fr; } }
+  .pm-chart-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.25rem; box-shadow: 0 1px 3px rgba(0,0,0,0.01); }
+  
+  .pm-chart-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.5rem; }
+  .pm-chart-header h3 { margin: 0; font-size: 0.9rem; font-weight: 600; color: #1e293b; }
+  
+  /* Micro Chart Filter Buttons */
+  .pm-chart-toggle { display: flex; background: #f1f5f9; border-radius: 6px; padding: 0.15rem; gap: 0.15rem; border: none; }
+  .pm-toggle-option {
+    background: transparent; border: none; padding: 0.25rem 0.6rem; font-size: 0.75rem; font-weight: 600;
+    color: #64748b; border-radius: 4px; cursor: pointer; transition: all 0.15s;
+  }
+  .pm-toggle-option.is-active { background: #fff; color: #4f46e5; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+
+  .pm-chart-wrap { position: relative; height: 210px; }
+  .pm-chart-wrap--tall { height: 260px; }
+
+  /* Tables Row Layout Protection */
+  .pm-panels-row { display: flex; flex-direction: row; gap: 1.25rem; margin-bottom: 1.5rem; width: 100%; align-items: stretch; }
+  @media (max-width: 992px) { .pm-panels-row { flex-direction: column; } }
+  
+  .pm-table-panel { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; overflow: hidden; display: flex; flex-direction: inline; min-height: 320px; flex: 1; min-width: 0; }
+  .pm-panel-meta { padding: 1rem 1.25rem; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; justify-content: space-between; background: #fafafa; }
+  .pm-panel-meta h4 { margin: 0; font-size: 0.9rem; font-weight: 600; color: #1e293b; }
+  .pm-table-search { padding: 0.35rem 0.75rem; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 0.8rem; outline: none; width: 180px; }
+  .pm-table-search:focus { border-color: #4f46e5; }
+
+  .pm-responsive-table { width: 100%; overflow-x: auto; }
+  .pm-core-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left; table-layout: auto; }
+  .pm-core-table th { padding: 0.75rem 1.25rem; background: #fff; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; color: #64748b; border-bottom: 1px solid #e2e8f0; letter-spacing: 0.03em; }
+  .pm-core-table td { padding: 0.75rem 1.25rem; border-bottom: 1px solid #f1f5f9; color: #334155; vertical-align: middle; }
+  .pm-core-table tr:hover td { background: #f8fafc; }
+  
+  .pm-core-table td strong { display: inline-block; word-break: break-word; max-width: 280px; line-height: 1.4; }
+  
+  /* Status Pill Tags Design */
+  .status-pill { display: inline-flex; align-items: center; padding: 0.15rem 0.5rem; border-radius: 9999px; font-size: 0.72rem; font-weight: 600; white-space: nowrap; }
+  .status-pill--success { background: #ecfdf5; color: #065f46; }
+  .status-pill--warn { background: #fff7ed; color: #9a3412; }
+  .status-pill--info { background: #eff6ff; color: #1e40af; }
+  .pm-empty-text { padding: 2rem; text-align: center; color: #94a3b8; font-size: 0.85rem; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="pm-dashboard">
+  <div class="pm-dashboard__hero">
+    <h1>{% trans "Analytics & Workspace Intelligence" %}</h1>
+    <p>{% trans "Upgraded visualization engine for system operations and metric lookups." %}</p>
+  </div>
+
+  <form method="GET" action="" class="pm-filter-strip">
+    <div class="pm-filter-item">
+      <label for="project_filter">{% trans "Project" %}</label>
+      <select name="project_filter" id="project_filter" class="pm-filter-input">
+        <option value="">{% trans "All Projects" %}</option>
+        {% for p in filter_options.projects %}
+          <option value="{{ p.id }}" {% if filter_options.selected_project == p.id|slugify %}selected{% endif %}>{{ p.project_name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="pm-filter-item">
+      <label for="user_filter">{% trans "Team Member" %}</label>
+      <select name="user_filter" id="user_filter" class="pm-filter-input">
+        <option value="">{% trans "All Users" %}</option>
+        {% for u in filter_options.users %}
+          <option value="{{ u.id }}" {% if filter_options.selected_user == u.id|slugify %}selected{% endif %}>{{ u.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="pm-filter-item">
+      <label for="date_filter">{% trans "Time Frame" %}</label>
+      <select name="date_filter" id="date_filter" class="pm-filter-input">
+        <option value="30d" {% if filter_options.selected_date == "30d" %}selected{% endif %}>{% trans "Last 30 Days" %}</option>
+        <option value="3m" {% if filter_options.selected_date == "3m" %}selected{% endif %}>{% trans "Last 3 Months" %}</option>
+        <option value="6m" {% if filter_options.selected_date == "6m" %}selected{% endif %}>{% trans "Last 6 Months" %}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="pm-submit-btn">{% trans "Apply Filter" %}</button>
+    <a href="." class="pm-clear-btn">{% trans "Reset Workspace" %}</a>
+  </form>
+
+  <div class="pm-kpi-grid">
+    <div class="pm-kpi pm-kpi--accent">
+      <div class="pm-kpi__label">{% trans "Projects" %}</div>
+      <div class="pm-kpi__value">{{ dashboard_totals.projects }}</div>
+      <div class="pm-kpi__sub">{{ dashboard_totals.project_completion_rate }}% {% trans "completed" %}</div>
+    </div>
+    <div class="pm-kpi pm-kpi--success">
+      <div class="pm-kpi__label">{% trans "Tasks" %}</div>
+      <div class="pm-kpi__value">{{ dashboard_totals.tasks }}</div>
+      <div class="pm-kpi__sub">{{ dashboard_totals.task_completion_rate }}% {% trans "done" %}</div>
+    </div>
+    <div class="pm-kpi">
+      <div class="pm-kpi__label">{% trans "Subtasks" %}</div>
+      <div class="pm-kpi__value">{{ dashboard_totals.subtasks }}</div>
+    </div>
+    <div class="pm-kpi pm-kpi--info">
+      <div class="pm-kpi__label">{% trans "Customers" %}</div>
+      <div class="pm-kpi__value">{{ dashboard_totals.customers }}</div>
+      <div class="pm-kpi__sub">{{ dashboard_totals.customer_active_rate }}% {% trans "active" %}</div>
+    </div>
+    <div class="pm-kpi">
+      <div class="pm-kpi__label">{% trans "Phases" %}</div>
+      <div class="pm-kpi__value">{{ dashboard_totals.phases }}</div>
+    </div>
+    <div class="pm-kpi pm-kpi--warning">
+      <div class="pm-kpi__label">{% trans "Team" %}</div>
+      <div class="pm-kpi__value">{{ dashboard_totals.users }}</div>
+      <div class="pm-kpi__sub">{{ dashboard_totals.assignments }} {% trans "assignments" %}</div>
+    </div>
+    <div class="pm-kpi">
+      <div class="pm-kpi__label">{% trans "Avg progress" %}</div>
+      <div class="pm-kpi__value">{{ dashboard_totals.avg_project_progress }}%</div>
+    </div>
+    <div class="pm-kpi">
+      <div class="pm-kpi__label">{% trans "Time logs" %}</div>
+      <div class="pm-kpi__value">{{ dashboard_totals.time_logs }}</div>
+      <div class="pm-kpi__sub">{% trans "avg" %} {{ dashboard_totals.avg_hours_per_log }}h</div>
+    </div>
+  </div>
+
+  <div class="pm-charts-container">
+    <div class="pm-chart-card">
+      <div class="pm-chart-header">
+        <h3>{% trans "Project Allocations" %}</h3>
+        <div class="pm-chart-toggle" id="projectChartFilterRow">
+          <button class="pm-toggle-option is-active" data-view="status">{% trans "By Status" %}</button>
+          <button class="pm-toggle-option" data-view="type">{% trans "By Type" %}</button>
+        </div>
+      </div>
+      <div class="pm-chart-wrap"><canvas id="chartProjectUpgrade"></canvas></div>
+    </div>
+
+    <div class="pm-chart-card">
+      <div class="pm-chart-header">
+        <h3>{% trans "Task Work Distribution" %}</h3>
+        <div class="pm-chart-toggle" id="taskChartFilterRow">
+          <button class="pm-toggle-option is-active" data-view="status">{% trans "By Status" %}</button>
+          <button class="pm-toggle-option" data-view="time">{% trans "By Time Consume" %}</button>
+        </div>
+      </div>
+      <div class="pm-chart-wrap"><canvas id="chartTaskUpgrade"></canvas></div>
+    </div>
+
+    <div class="pm-chart-card" style="grid-column: 1 / -1;">
+      <div class="pm-chart-header">
+        <h3>{% trans "Productivity Trends Timeline (Total Spent Hours)" %}</h3>
+        <div class="pm-chart-toggle" id="timelineChartFilterRow">
+          <button class="pm-toggle-option is-active" data-view="total">{% trans "Total Hours" %}</button>
+          <button class="pm-toggle-option" data-view="project">{% trans "Split by Project" %}</button>
+          <button class="pm-toggle-option" data-view="user">{% trans "Split by Team" %}</button>
+        </div>
+      </div>
+      <div class="pm-chart-wrap pm-chart-wrap--tall"><canvas id="chartTimelineHours"></canvas></div>
+    </div>
+  </div>
+
+  <div class="pm-panels-row">
+    <div class="pm-table-panel">
+      <div style="display:flex; flex-direction:column; width:100%;">
+        <div class="pm-panel-meta">
+          <h4>{% trans "Recent Operations Logs" %}</h4>
+          <input type="text" id="searchActivityTable" class="pm-table-search" placeholder="{% trans 'Search logs...' %}">
+        </div>
+        <div class="pm-responsive-table">
+          {% if dashboard_recent_activities %}
+          <table class="pm-core-table" id="activityTable">
+            <thead>
+              <tr>
+                <th style="width: 50%;">{% trans "Action Description" %}</th>
+                <th style="width: 25%;">{% trans "System Node" %}</th>
+                <th style="width: 25%;">{% trans "Timestamp" %}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in dashboard_recent_activities %}
+              <tr>
+                <td><strong>{{ row.action }}</strong></td>
+                <td><span class="status-pill status-pill--info">{{ row.activity_type }}</span></td>
+                <td style="color:#64748b; font-size:0.8rem; white-space: nowrap;">{{ row.timestamp }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% else %}
+          <p class="pm-empty-text">{% trans "No workspace transactions registered inside this query matrix." %}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="pm-table-panel">
+      <div style="display:flex; flex-direction:column; width:100%;">
+        <div class="pm-panel-meta">
+          <h4>{% trans "Timesheet Matrix Overview" %}</h4>
+          <input type="text" id="searchTimesheetTable" class="pm-table-search" placeholder="{% trans 'Filter metrics...' %}">
+        </div>
+        <div class="pm-responsive-table">
+          {% if dashboard_recent_logs %}
+          <table class="pm-core-table" id="timesheetTable">
+            <thead>
+              <tr>
+                <th style="width: 45%;">{% trans "Project Tracker" %}</th>
+                <th style="width: 35%;">{% trans "Operator" %}</th>
+                <th style="width: 20%;">{% trans "Logged Mass" %}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in dashboard_recent_logs %}
+              <tr>
+                <td><span style="font-weight:600; color:#1e293b;">{{ row.project__project_name }}</span></td>
+                <td style="white-space: nowrap;">{{ row.user__name }}</td>
+                <td><span class="status-pill status-pill--success">{{ row.total_spent_hrs }} hrs</span></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% else %}
+          <p class="pm-empty-text">{% trans "No matching timesheet objects found." %}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ dashboard_charts|json_script:"dashboard-charts-data" }}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+(function () {
+  const charts = JSON.parse(document.getElementById('dashboard-charts-data').textContent);
+  const defaults = { 
+    responsive: true, 
+    maintainAspectRatio: false, 
+    plugins: { 
+      legend: { position: 'bottom', labels: { boxWidth: 10, padding: 12, font: { size: 11, weight: '500' } } } 
+    } 
+  };
+
+  // Setup Upgraded Dynamic Swapping Project Doughnut Chart
+  let projectChartInstance = null;
+  function renderProjectChart(viewMode) {
+    const el = document.getElementById('chartProjectUpgrade');
+    if (!el) return;
+    
+    const activeData = (viewMode === 'type') ? charts['project_type'] : charts['project_status'];
+    
+    if (projectChartInstance) {
+      projectChartInstance.destroy();
+    }
+    
+    if (!activeData.labels.length) {
+      el.parentElement.innerHTML = '<p class="pm-empty-text">{% trans "No matching data vectors" %}</p>';
+      return;
+    }
+
+    projectChartInstance = new Chart(el, {
+      type: 'doughnut',
+      data: {
+        labels: activeData.labels,
+        datasets: [{
+          data: activeData.data,
+          backgroundColor: activeData.colors,
+          borderWidth: 2,
+          borderColor: '#fff',
+          hoverOffset: 4
+        }]
+      },
+      options: { ...defaults, cutout: '65%' }
+    });
+  }
+
+  // Setup Upgraded Dynamic Swapping Task Doughnut Chart
+  let taskChartInstance = null;
+  function renderTaskChart(viewMode) {
+    const el = document.getElementById('chartTaskUpgrade');
+    if (!el) return;
+    
+    // Dynamically uses task_status or task_time_consume data slices from backend context
+    const activeData = (viewMode === 'time') ? charts['task_time_consume'] : charts['task_status'];
+    
+    if (taskChartInstance) {
+      taskChartInstance.destroy();
+    }
+    
+    if (!activeData || !activeData.labels.length) {
+      el.parentElement.innerHTML = '<p class="pm-empty-text">{% trans "No matrix data matching query" %}</p>';
+      return;
+    }
+
+    taskChartInstance = new Chart(el, {
+      type: 'doughnut',
+      data: {
+        labels: activeData.labels,
+        datasets: [{
+          data: activeData.data,
+          backgroundColor: activeData.colors,
+          borderWidth: 2,
+          borderColor: '#fff',
+          hoverOffset: 4
+        }]
+      },
+      options: { ...defaults, cutout: '65%' }
+    });
+  }
+
+  // Upgraded High-Performance Multi-Line Matrix Chart Execution
+  let timelineChartInstance = null;
+  const vibrantPalette = ['#4f46e5', '#10b981', '#0ea5e9', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'];
+
+  function renderTimelineChart(viewMode) {
+    const el = document.getElementById('chartTimelineHours');
+    if (!el) return;
+
+    if (timelineChartInstance) {
+      timelineChartInstance.destroy();
+    }
+
+    let chartData = {};
+    
+    if (viewMode === 'total') {
+      const c = charts['monthly_hours'];
+      if (!c.labels.length) return;
+      chartData = {
+        labels: c.labels,
+        datasets: [{
+          label: 'Total Hours',
+          data: c.data,
+          borderColor: '#4f46e5',
+          backgroundColor: 'rgba(79, 70, 229, 0.05)',
+          fill: true,
+          tension: 0.3,
+          pointRadius: 4,
+          pointBackgroundColor: '#4f46e5'
+        }]
+      };
+    } else if (viewMode === 'project') {
+      const c = charts['timeline_by_project'];
+      chartData = {
+        labels: c.labels,
+        datasets: c.datasets.map((ds, i) => ({
+          label: ds.label,
+          data: ds.data,
+          borderColor: vibrantPalette[i % vibrantPalette.length],
+          backgroundColor: 'transparent',
+          fill: false,
+          tension: 0.3,
+          pointRadius: 4
+        }))
+      };
+    } else if (viewMode === 'user') {
+      const c = charts['timeline_by_user'];
+      chartData = {
+        labels: c.labels,
+        datasets: c.datasets.map((ds, i) => ({
+          label: ds.label,
+          data: ds.data,
+          borderColor: vibrantPalette[i % vibrantPalette.length],
+          backgroundColor: 'transparent',
+          fill: false,
+          tension: 0.3,
+          pointRadius: 4
+        }))
+      };
+    }
+
+    timelineChartInstance = new Chart(el, {
+      type: 'line',
+      data: chartData,
+      options: { 
+        ...defaults, 
+        plugins: { 
+          legend: { 
+            display: viewMode !== 'total',
+            position: 'bottom',
+            labels: { boxWidth: 10, padding: 12, font: { size: 11, weight: '500' } }
+          } 
+        },
+        scales: { 
+          x: { grid: { display: false } }, 
+          y: { beginAtZero: true, grid: { color: '#f8fafc' } } 
+        } 
+      }
+    });
+  }
+
+  // Event Listeners for Filter Rows
+  const timelineButtons = document.querySelectorAll('#timelineChartFilterRow .pm-toggle-option');
+  timelineButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      timelineButtons.forEach(b => b.classList.remove('is-active'));
+      this.classList.add('is-active');
+      renderTimelineChart(this.getAttribute('data-view'));
+    });
+  });
+
+  const projectButtons = document.querySelectorAll('#projectChartFilterRow .pm-toggle-option');
+  projectButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      projectButtons.forEach(b => b.classList.remove('is-active'));
+      this.classList.add('is-active');
+      renderProjectChart(this.getAttribute('data-view'));
+    });
+  });
+
+  const taskButtons = document.querySelectorAll('#taskChartFilterRow .pm-toggle-option');
+  taskButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      taskButtons.forEach(b => b.classList.remove('is-active'));
+      this.classList.add('is-active');
+      renderTaskChart(this.getAttribute('data-view'));
+    });
+  });
+
+  function registerTableSearch(inputId, tableId) {
+    const input = document.getElementById(inputId);
+    const table = document.getElementById(tableId);
+    if (!input || !table) return;
+
+    input.addEventListener('keyup', function () {
+      const filter = this.value.toLowerCase();
+      const rows = table.getElementsByTagName('tr');
+      
+      for (let i = 1; i < rows.length; i++) {
+        let matchFound = false;
+        const cells = rows[i].getElementsByTagName('td');
+        for (let j = 0; j < cells.length; j++) {
+          if (cells[j] && cells[j].textContent.toLowerCase().indexOf(filter) > -1) {
+            matchFound = true;
+            break;
+          }
+        }
+        rows[i].style.display = matchFound ? '' : 'none';
+      }
+    });
+  }
+
+  // Initial Chart Render Trigger calls
+  renderProjectChart('status');
+  renderTaskChart('status');
+  renderTimelineChart('total');
+
+  registerTableSearch('searchActivityTable', 'activityTable');
+  registerTableSearch('searchTimesheetTable', 'timesheetTable');
+})();
+</script>
+{% endblock %}
