@@ -12,7 +12,7 @@ class UserMasterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserMaster
-        fields = ['id', 'name', 'email', 'role', 'role_name', 'designation', 'department', 'created_at']
+        fields = ['id', 'name', 'email', 'role', 'role_name', 'designation', 'department']
         extra_kwargs = {'password': {'write_only': True}} # Hide password in JSON output
 
 class UserSkillSerializer(serializers.ModelSerializer):
